@@ -35,4 +35,4 @@ export SQOOP_HOME=/usr/lib/sqoop
 export PATH=$PATH:.:$HADOOP_HOME/bin:$JAVA_HOME/bin:/usr/lib/cassandra-node1/bin
 
 # vimrc
-export MYVIMRC=/home/kakuiyuya01/.vimrc
+export MYVIMRC=~/.vimrc
