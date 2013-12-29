@@ -4,7 +4,7 @@ if [ -d $DOTFILES ]; then
     echo "Update my dotfiles ..."
     cd $DOTFILES && git pull origin master
 else
-    git clone 
+    git clone git@github.com:kyaukyuai/dotfiles.git $DOTFILES
     git clone https://github.com/Shougo/neobundle.vim.git $DOTFILES/.vim/bundle/neobundle.vim
 fi
 for i in `ls -A $DOTFILES | grep -v "^\.git$" | grep "^\."`; do
