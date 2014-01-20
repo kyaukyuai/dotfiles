@@ -2,15 +2,14 @@
 inoremap <silent> jj <ESC>
 
 "----------------------------------------------------
-"" neobundle.vim
+"basic setting
 "----------------------------------------------------
-set tabstop=4
+set scrolloff=5
+set textwidth=0
 set wildmenu
 set showcmd
 set showmode
 set smartcase
-set expandtab
-set autoindent
 set ruler
 set visualbell
 set t_vb=
@@ -20,10 +19,22 @@ set laststatus=2
 set cmdheight=1
 set nocompatible
 set completeopt=menu,preview
+" Indent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set cindent
+set expandtab
+set smarttab
+filetype plugin indent on
+" Apperance
+set showmatch
+set number
 set list
-filetype plugin indent off
-filetype plugin on
-filetype indent on
+set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
+set cursorline
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -33,6 +44,7 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'ujihisa/unite-locate'
@@ -61,9 +73,11 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'ack.vim'
+NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
 
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
 syntax on
 if has('gui_running')
   set background=light
@@ -71,6 +85,7 @@ else
   set background=dark
 endif
 colorscheme solarized
+let g:solarized_termcolors=256
 
 " JavaScript
 au FileType javascript call JavaScriptFold()
@@ -89,10 +104,10 @@ endfunction
 
 " Set tabline.
 function! s:my_tabline() "{{{
-	let s = ''
-	for i in range(1, tabpagenr('$'))
-		let bufnrs = tabpagebuflist(i)
-		let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
     let no = i  " display 0-origin tabpagenr.
     let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
     let title = fnamemodify(bufname(bufnr), ':t')
@@ -102,9 +117,9 @@ function! s:my_tabline() "{{{
     let s .= no . ':' . title
     let s .= mod
     let s .= '%#TabLineFill# '
-  endfor	
-	let s .= '%#TabLineFill#%T%=%#TabLine#'
-	return s
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
 endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2 " 常にタブラインを表示
@@ -115,7 +130,7 @@ nmap    t [Tag]
 
 " Tab jump
 for n in range(1, 9)
-	execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
