@@ -74,6 +74,7 @@ NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'ack.vim'
 NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
+NeoBundle 'kmnk/vim-unite-giti'
 
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
@@ -84,8 +85,9 @@ if has('gui_running')
 else
   set background=dark
 endif
+set t_Co=16
+let g:solarized_termcolors=16
 colorscheme solarized
-let g:solarized_termcolors=256
 
 " JavaScript
 au FileType javascript call JavaScriptFold()
