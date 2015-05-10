@@ -30,3 +30,10 @@
   'cmd-h': 'pane:show-previous-item'
   'cmd-l': 'pane:show-next-item'
   ': w': 'core:save'
+'atom-text-editor:not(mini).autocomplete-active':
+  'tab': 'unset!'
+  'enter': 'autocomplete-plus:confirm'
+  'up': 'unset!'
+  'down': 'unset!'
+  'ctrl-p': 'core:move-up'
+  'ctrl-n': 'core:move-down'
