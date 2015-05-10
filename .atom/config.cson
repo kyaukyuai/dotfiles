@@ -1,0 +1,19 @@
+"*":
+  "exception-reporting":
+    userId: "4670c3e0-6b83-4840-3e3a-be1fb4181a1a"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "7f486a69a52c6020fee8d57e0ca6311b950f6043"
+  core:
+    themes: [
+      "atom-light-ui"
+      "one-dark-syntax"
+    ]
+    disabledPackages: [
+      "autocomplete-css"
+      "autocomplete-html"
+    ]
+  editor:
+    invisibles: {}
+  linter: {}

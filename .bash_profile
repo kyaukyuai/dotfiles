@@ -13,6 +13,7 @@ PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/lib64/qt4/bin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:$HOME/go/bin
+PATH=$PATH:/usr/local
 export PATH
 
 # anyenv
