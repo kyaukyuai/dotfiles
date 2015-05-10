@@ -1,0 +1,28 @@
+{
+  "name": "bracket-matcher",
+  "version": "0.74.0",
+  "main": "./lib/main",
+  "description": "Highlight the matching bracket for the `(){}[]` character under the cursor. Move the cursor to the matching bracket with `ctrl-m`.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/bracket-matcher"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "first-mate": "^3.0",
+    "underscore-plus": "1.x"
+  },
+  "readme": "# Bracket Matcher package [![Build Status](https://travis-ci.org/atom/bracket-matcher.svg?branch=master)](https://travis-ci.org/atom/bracket-matcher)\n\nHighlights and jumps between `[]`, `()`, and `{}`. Also highlights matching XML\nand HTML tags.\n\nAutocompletes `[]`, `()`, and `{}`, `\"\"`, `''`, `“”`, `‘’`, `«»`, `‹›`, and\nbackticks.\n\nYou can toggle whether English/French style quotation marks (`“”`, `‘’`, `«»`\nand `‹›`) are autocompleted via the *Autocomplete Smart Quotes*  setting in the\nsettings view.\n\nUse `ctrl-m` to jump to the bracket matching the one adjacent to the cursor.\nIt jumps to the nearest enclosing bracket when there's no adjacent bracket,\n\nUse `ctrl-cmd-m` to select all the text inside the current brackets.\n\nUse `alt-cmd-.` to close the current XML/HTML tag.\n\nMatching brackets and quotes are sensibly inserted for you. If you dislike this\nfunctionality, you can disable it from the Bracket Matcher section of the\nSettings view (`cmd-,`).\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/atom/bracket-matcher/issues"
+  },
+  "homepage": "https://github.com/atom/bracket-matcher",
+  "_id": "bracket-matcher@0.74.0",
+  "_shasum": "be7db2fc27f7ecb6b5725a410d224bdfdf3fd69a",
+  "_resolved": "file:../d-11549-16816-t3il5e/package.tgz",
+  "_from": "../d-11549-16816-t3il5e/package.tgz"
+}

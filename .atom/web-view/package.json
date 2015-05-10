@@ -1,0 +1,148 @@
+{
+  "name": "web-view",
+  "version": "0.3.0",
+  "description": "Opens a web browser in Atom",
+  "main": "./lib/web",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabceb/atom-web-view"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "fs-plus": "2.x",
+    "underscore-plus": "1.x",
+    "underscore.string": "2.3.x",
+    "validator": "3.4.0"
+  },
+  "readme": "# Atom Web View package\n\nOpens a web browser in an editor in Atom.\n\n* `ctrl-shift-G` to open a site\n* Use Atom's menu Packages > Web View > Go to page\n\n![Atom Web View](https://raw.github.com/gabceb/atom-web-view/master/atom-web-view.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/gabceb/atom-web-view/issues"
+  },
+  "homepage": "https://github.com/gabceb/atom-web-view",
+  "_id": "web-view@0.3.0",
+  "dist": {
+    "shasum": "452df8eb29105187a75b066144aff36fe730ec28"
+  },
+  "_resolved": "/private/var/folders/26/0b2qfv_10vvf12zm32cyv3m80000gn/T/d-114103-4061-1gvwhnp/package.tgz",
+  "_from": "/private/var/folders/26/0b2qfv_10vvf12zm32cyv3m80000gn/T/d-114103-4061-1gvwhnp/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "fs-plus",
+        "version": "2.3.1",
+        "path": "node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.1",
+        "path": "node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "underscore.string",
+        "version": "2.3.3",
+        "path": "node_modules/underscore.string/lib/underscore.string.js"
+      },
+      {
+        "name": "validator",
+        "version": "3.4.0",
+        "path": "node_modules/validator/validator.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/web-editor-uri-mini-view.coffee",
+        "lib/web-editor-view.coffee",
+        "lib/web.coffee"
+      ],
+      ".js": [
+        "node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/underscore.string/dist/underscore.string.min.js",
+        "node_modules/underscore.string/lib/underscore.string.js",
+        "node_modules/validator/validator.js",
+        "node_modules/validator/validator.min.js"
+      ],
+      ".json": [
+        "node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/fs-plus/package.json",
+        "node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/underscore-plus/package.json",
+        "node_modules/underscore.string/component.json",
+        "node_modules/underscore.string/package.json",
+        "node_modules/validator/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "fs-plus": "2.x",
+          "underscore-plus": "1.x",
+          "underscore.string": "2.3.x",
+          "validator": "3.4.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/lib",
+          "node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/underscore-plus/lib",
+          "node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      }
+    ]
+  }
+}
