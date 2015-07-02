@@ -38,9 +38,13 @@ set cursorline
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
+"  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+"
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
@@ -79,6 +83,9 @@ NeoBundle 'kmnk/vim-unite-giti'
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
+
+call neobundle#end()
+
 syntax on
 if has('gui_running')
   set background=light
