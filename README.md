@@ -14,13 +14,12 @@ chezmoi init --apply <your-github-username>   # 例: chezmoi init --apply kyauky
 - **shell**: `.zshrc`（starship + zsh）
 - **git**: `.gitconfig`（alias 多数・ghq）／ `~/.config/git/ignore`
 - **vim**: `.vimrc`
-- **~/.config**: `aerospace`（タイリングWM）/ `borders`（JankyBorders）/ `karabiner` / `starship` / `zed`（settings）
+- **~/.config**: `aerospace`（タイリングWM）/ `borders`（JankyBorders）/ `karabiner` / `sketchybar`（ステータスバー）/ `starship` / `zed`（settings）
 
 ## 含まないもの（重要）
 
 - **機密は含まれません**。API キー等は `~/.config/zsh/secrets.zsh`（chmod 600・git管理外）に分離し、`.zshrc` から `source` します。
 - `gh` / `gcloud` / `github-copilot` 等の認証ディレクトリは `.chezmoiignore` 済みで版管理対象外です。
-- `~/.config/sketchybar` の設定は未収録（アプリは入れているが config は別途）。
 
 ## ライセンス
 
