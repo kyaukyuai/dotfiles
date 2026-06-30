@@ -25,3 +25,17 @@ chezmoi init --apply <your-github-username>   # 例: chezmoi init --apply kyauky
 ## ライセンス
 
 MIT（`LICENSE` 参照）。
+
+## ローカル identity（任意）
+
+公開既定は `email = *@users.noreply.github.com` / `gpgsign = false`。自分のマシンで実名メール・GPG 署名を使うには、git 管理外（`.chezmoiignore` 済み）の次のファイルを作成する。`.gitconfig` 末尾の `[include]` が存在すれば読み込む。
+
+```ini
+# ~/.config/git/identity.local
+[user]
+	name = Your Name
+	email = you@example.com
+	signingkey = YOUR_GPG_KEY_ID
+[commit]
+	gpgsign = true
+```

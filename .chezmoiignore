@@ -13,3 +13,4 @@
 .config/zsh
 README.md
 LICENSE
+.config/git/identity.local

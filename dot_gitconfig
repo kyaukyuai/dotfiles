@@ -51,3 +51,7 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+
+# ローカル identity を上書き読み込み（存在すれば実名/署名鍵が有効、無ければ上の noreply/署名なしの既定）
+[include]
+	path = ~/.config/git/identity.local
