@@ -1,0 +1,225 @@
+# =============================================================================
+# Oh My Zsh
+# =============================================================================
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+# compinit キャッシュ
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-completions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# =============================================================================
+# PATH（一括設定）
+# =============================================================================
+export GHQ_ROOT="$HOME/src"
+export GOPATH="$HOME/go"
+export VOLTA_HOME="$HOME/.volta"
+export BUN_INSTALL="$HOME/.bun"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+path=(
+  $HOME/.local/bin
+  $HOME/.browser-use-env/bin
+  $HOME/.browser-use/bin
+  ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
+  $VOLTA_HOME/bin
+  $BUN_INSTALL/bin
+  $HOME/.turso
+  $HOME/.codeium/windsurf/bin
+  /Applications/IntelliJ\ IDEA.app/Contents/MacOS
+  $GOPATH/bin
+  $HOME/development/flutter/bin
+  $HOME/.pub-cache/bin
+  $ANDROID_HOME/emulator
+  $ANDROID_HOME/platform-tools
+  $path
+)
+typeset -U path  # 重複排除
+
+# =============================================================================
+# ghq + fzf
+# =============================================================================
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --inline-info --preview-window=right:60%:wrap"
+
+function repo() {
+  local selected_dir=$(ghq list -p | fzf --preview "ls -la {}" --preview-window=right:60%)
+  if [ -n "$selected_dir" ]; then
+    cd "$selected_dir"
+  fi
+}
+zle -N repo
+bindkey '^]' repo
+
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N select-history
+bindkey '^r' select-history
+
+function vscode() {
+  local repository=$(ghq list | fzf --preview "ls -la $(ghq root)/{}" --preview-window=right:60%)
+  if [ -n "$repository" ]; then
+    code "$(ghq root)/$repository" -r
+  fi
+}
+
+function browse() {
+  local selected_repo=$(ghq list | fzf --preview "ls -la $(ghq root)/{}" --preview-window=right:60%)
+  if [ -n "$selected_repo" ]; then
+    open "https://${selected_repo}"
+  fi
+}
+
+# =============================================================================
+# Aliases
+# =============================================================================
+alias g='repo'
+alias c='cursor'
+alias z='zed'
+alias w='windsurf'
+alias h='browse'
+alias cc='claude'
+alias ccd='claude --dangerously-skip-permissions'
+
+if type eza > /dev/null 2>&1; then
+  alias ls='eza --icons --git'
+  alias ll='eza -l --icons --git'
+  alias la='eza -la --icons --git'
+  alias lt='eza --tree --icons'
+  alias l.='eza -a | egrep "^\."'
+fi
+
+alias whatismyip='curl ipinfo.io/ip'
+alias tf='terraform'
+alias k='kubectl'
+alias m='minikube'
+alias d='docker'
+alias dc='docker compose'
+alias oc="opencommit"
+
+# Python
+alias pyv='python3 -m venv venv && . venv/bin/activate'
+alias pyi='poetry init && poetry install'
+alias pys='poetry shell'
+alias pya='poetry add'
+alias pyd='poetry add --dev'
+alias pyr='poetry remove'
+alias pyup='poetry update'
+
+# GitHub CLI
+alias ghpr='gh pr'
+alias ghprc='gh pr create -a @me'
+alias ghprv='gh pr view --web'
+alias ghprl='gh pr list'
+alias ghprm='gh pr merge'
+alias ghr='gh repo'
+alias ghrc='gh repo clone'
+alias ghrv='gh repo view --web'
+alias ghi='gh issue'
+alias ghil='gh issue list'
+alias ghic='gh issue create'
+alias ghiv='gh issue view --web'
+
+# =============================================================================
+# Kubernetes（遅延読み込み — 使うときだけ completion をロード）
+# =============================================================================
+function kubectl() { unfunction "$0"; source <(command kubectl completion zsh); command kubectl "$@"; }
+function helm() { unfunction "$0"; source <(command helm completion zsh); command helm "$@"; }
+function minikube() { unfunction "$0"; source <(command minikube completion zsh); command minikube "$@"; }
+function argo() { unfunction "$0"; source <(command argo completion zsh); command argo "$@"; }
+
+alias kc='kubectx | fzf --height 40% --reverse | xargs kubectx'
+alias kn='kubens | fzf --height 40% --reverse | xargs kubens'
+alias kg='kubectl get'
+alias kd='kubectl describe'
+alias ke='kubectl edit'
+alias kl='kubectl logs'
+
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/config
+
+# Terraform completion
+complete -o nospace -C $(which terraform) terraform
+
+# =============================================================================
+# Tool initializations
+# =============================================================================
+# Starship
+eval "$(starship init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# SSH Agent（既に走っていなければ起動）
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval $(ssh-agent -s) > /dev/null 2>&1
+  ssh-add ~/.ssh/id_ed25519 2>/dev/null
+fi
+
+# GPG
+export GPG_TTY=$(tty)
+
+# gcloud
+function gconf() {
+  gcloud config configurations activate $1 && \
+  gcloud auth application-default set-quota-project $(gcloud config get-value project)
+}
+
+# Warp
+PROMPT_EOL_MARK=''
+
+# =============================================================================
+# conda（遅延読み込み）
+# =============================================================================
+function conda() {
+  unfunction "$0"
+  __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+  else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+      . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+      export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+  fi
+  unset __conda_setup
+  command conda "$@"
+}
+
+# =============================================================================
+# External tool integrations
+# =============================================================================
+# kiro
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# wt (Warp Terminal)
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# daytona
+[ -f $HOME/.daytona.completion_script.zsh ] && source $HOME/.daytona.completion_script.zsh
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# cargo/rust
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# Basic Memory embeddings (OpenAI)
+
+
+# Added by Antigravity CLI installer
+export PATH="$HOME/.local/bin:$PATH"
+
+# 機密の環境変数（git管理外）
+[ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"

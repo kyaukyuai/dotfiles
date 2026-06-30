@@ -1,0 +1,15 @@
+.config/gh
+.config/gcloud
+.config/github-copilot
+.config/google-calendar-mcp
+.config/configstore
+.zsh_history
+.zsh_sessions
+.config/zed/conversations
+.config/zed/prompts
+.config/zed/settings_backup.json
+.config/karabiner/automatic_backups
+.config/zsh/secrets.zsh
+.config/zsh
+README.md
+LICENSE

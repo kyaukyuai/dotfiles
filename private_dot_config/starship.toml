@@ -1,0 +1,56 @@
+command_timeout = 2000
+
+[aws]
+disabled = true
+
+[character]
+success_symbol = "[▶](bold green)"
+error_symbol = "[▶](bold red)"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[git_status]
+disabled = false
+
+[hostname]
+disabled = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+[time]
+disabled = false
+time_format = "%Y-%m-%d %H:%M"
+utc_time_offset = "+9"
+
+[username]
+disabled = true
+
+[kubernetes]
+disabled = false
+style = "bold blue"
+
+[gcloud]
+format = "[$symbol$active]($style)  "
+style = "bold yellow"
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 20
+truncation_symbol = "..."
+
+[cmd_duration]
+min_time = 500
+format = "underwent [$duration](bold yellow)"
+
+[python]
+disabled = false
+format = '[${symbol}(${version}) (\($virtualenv\))]($style) '
+symbol = "🐍 "
+style = "bold blue"  # または他の設定で使用している色に合わせる
+

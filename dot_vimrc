@@ -1,0 +1,192 @@
+" 基本設定
+set number               " 行番号を表示
+set cursorline          " カーソル行をハイライト
+set cursorcolumn        " カーソル列をハイライト
+set virtualedit=onemore " 行末の1文字先までカーソルを移動可能に
+set visualbell          " ビープ音を視覚表示に
+set showmatch           " 対応する括弧を表示
+set matchtime=1         " 対応する括弧の表示時間を0.1秒に
+set display=lastline    " 長い行を省略せずに表示
+set scrolloff=8         " スクロール時の余白確保
+set sidescrolloff=16    " 横スクロール時の余白確保
+set pumheight=10        " 補完メニューの高さを制限
+set cmdheight=2         " コマンドラインの高さを2行に
+
+" インデントと表示
+set autoindent
+set smartindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set list                " 不可視文字を表示
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set wrap                " 長い行を折り返し表示
+set breakindent         " 折り返し時にインデントを維持
+set showbreak=↪         " 折り返し行の先頭に表示する記号
+
+" 検索設定
+set ignorecase          " 検索時に大文字小文字を無視
+set smartcase           " 検索時に大文字を含んでいたら大文字小文字を区別
+set incsearch          " インクリメンタルサーチ
+set hlsearch           " 検索結果をハイライト
+set wrapscan           " 検索時にファイル末尾に到達したら先頭から再検索
+
+" ステータスライン
+set laststatus=2
+set statusline=%F                                 " ファイルパス
+set statusline+=%m                               " 修正フラグ
+set statusline+=%r                               " 読み取り専用フラグ
+set statusline+=%h                               " ヘルプページフラグ
+set statusline+=%w                               " プレビューウィンドウフラグ
+set statusline+=%=                               " 右寄せ項目の開始
+set statusline+=[ENC=%{&fileencoding}]           " エンコーディング
+set statusline+=[FORMAT=%{&fileformat}]          " ファイルフォーマット
+set statusline+=[TYPE=%Y]                        " ファイルタイプ
+set statusline+=[POS=%l/%L,%v][%p%%]            " カーソル位置
+
+" コマンドライン補完
+set wildmenu
+set wildmode=list:longest,full
+set wildignore+=*.o,*.obj,*.pyc,*.so,*.dll
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" クリップボードとマウス
+set clipboard=unnamed,unnamedplus  " システムのクリップボードを使用
+set mouse=a                       " マウス操作を有効化
+set ttymouse=xterm2              " マウスホイールを有効化
+
+" ファイル設定
+set nobackup
+set noswapfile
+set autoread            " 外部でファイルが変更された場合に自動で読み直す
+set hidden              " バッファを切り替える時に保存を要求しない
+set backspace=indent,eol,start  " バックスペースでの削除を便利に
+
+" エンコーディング
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+
+" 入力補完
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c       " 補完メッセージを表示しない
+
+" スペルチェック（コメントのみ）
+set spell
+set spelllang=en,cjk
+
+" ベル
+set belloff=all        " すべてのベル音を無効化
+
+" カラーテーマの基本設定
+set termguicolors             " 24bitカラーを使用
+set background=dark           " ダークテーマをベース
+
+" Solarizedテーマに近い目に優しい配色の設定
+" 背景色と文字色の設定
+highlight Normal guibg=#002b36 guifg=#839496
+highlight NonText guifg=#657b83
+
+" カーソル行/列のハイライト設定
+highlight CursorLine guibg=#073642 gui=none
+highlight CursorLineNr guifg=#b58900 gui=none
+highlight CursorColumn guibg=#073642
+
+" 行番号の配色
+highlight LineNr guifg=#586e75 guibg=#002b36
+
+" 構文ハイライトの配色
+highlight Comment guifg=#586e75
+highlight Constant guifg=#2aa198
+highlight String guifg=#859900
+highlight Identifier guifg=#268bd2
+highlight Statement guifg=#719e07
+highlight PreProc guifg=#cb4b16
+highlight Type guifg=#b58900
+highlight Special guifg=#dc322f
+highlight Error guibg=#dc322f guifg=#fdf6e3
+
+" 検索ハイライトの配色
+highlight Search guibg=#b58900 guifg=#002b36
+highlight IncSearch guibg=#cb4b16 guifg=#002b36
+
+" ステータスラインの配色
+highlight StatusLine guibg=#657b83 guifg=#fdf6e3
+highlight StatusLineNC guibg=#073642 guifg=#839496
+
+" 補完メニューの配色
+highlight Pmenu guibg=#073642 guifg=#839496
+highlight PmenuSel guibg=#586e75 guifg=#eee8d5
+highlight PmenuSbar guibg=#073642
+highlight PmenuThumb guibg=#839496
+
+" 括弧のマッチング
+highlight MatchParen guibg=#073642 guifg=#dc322f gui=bold
+
+" 折りたたみの配色
+highlight Folded guibg=#073642 guifg=#839496
+highlight FoldColumn guibg=#073642 guifg=#839496
+
+" ビジュアルモードの選択部分
+highlight Visual guibg=#073642 guifg=NONE
+
+" スペルチェックの配色
+highlight SpellBad gui=undercurl guisp=#dc322f
+highlight SpellCap gui=undercurl guisp=#6c71c4
+highlight SpellRare gui=undercurl guisp=#d33682
+highlight SpellLocal gui=undercurl guisp=#2aa198
+
+" 差分表示の配色
+highlight DiffAdd guibg=#244230 guifg=NONE
+highlight DiffChange guibg=#2b3c43 guifg=NONE
+highlight DiffDelete guibg=#432424 guifg=#586e75
+highlight DiffText guibg=#484830 guifg=NONE
+
+" 不可視文字の配色
+highlight SpecialKey guifg=#586e75
+highlight NonText guifg=#586e75
+highlight VertSplit guifg=#073642 guibg=#073642
+
+" インデントガイドの配色
+highlight IndentGuidesOdd guibg=#073642
+highlight IndentGuidesEven guibg=#073642
+
+" タブラインの配色
+highlight TabLine guibg=#073642 guifg=#839496 gui=none
+highlight TabLineFill guibg=#073642 gui=none
+highlight TabLineSel guibg=#586e75 guifg=#fdf6e3 gui=bold
+
+" 分割線の配色
+set fillchars+=vert:│
+highlight VertSplit guifg=#073642 guibg=NONE gui=NONE
+
+" コマンドライン
+highlight ModeMsg guifg=#b58900
+highlight MoreMsg guifg=#859900
+highlight Question guifg=#2aa198
+highlight WarningMsg guifg=#dc322f
+
+" ポップアップメニューのスクロールバー
+set pumheight=15
+highlight PmenuSbar guibg=#073642
+highlight PmenuThumb guibg=#586e75
+
+" カラム位置表示の設定
+set colorcolumn=80,100,120
+highlight ColorColumn guibg=#073642
+
+" Whitespace表示の設定
+set list
+set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:␣
+highlight SpecialKey guifg=#586e75
+
+" エラーサイン列の配色
+highlight SignColumn guibg=#002b36
+
+" 選択範囲の配色
+highlight Visual guibg=#073642 guifg=NONE gui=none
+highlight VisualNOS guibg=#073642 guifg=NONE gui=none
+
+" シンタックスハイライトを有効化（最後に設定）
+syntax enable
