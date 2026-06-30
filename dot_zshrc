@@ -149,16 +149,16 @@ alias kl='kubectl logs'
 export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}$HOME/.kube/config
 
 # Terraform completion
-complete -o nospace -C $(which terraform) terraform
+command -v terraform >/dev/null && complete -o nospace -C "$(command -v terraform)" terraform
 
 # =============================================================================
 # Tool initializations
 # =============================================================================
 # Starship
-eval "$(starship init zsh)"
+command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # direnv
-eval "$(direnv hook zsh)"
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # SSH Agent（既に走っていなければ起動）
 if [ -z "$SSH_AUTH_SOCK" ]; then
