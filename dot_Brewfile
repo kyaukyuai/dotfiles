@@ -2,7 +2,7 @@ tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "kyaukyuai/tap"
 tap "nikitabobko/tap"
 tap "steipete/tap"
-tap "ungive/media-control"
+tap "ungive/media-control", trusted: { formulae: ["media-control"] }
 tap "xdevplatform/tap"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
@@ -64,6 +64,8 @@ cask "1password-cli"
 cask "nikitabobko/tap/aerospace", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Japanese input method
+cask "azookey"
 # Terminal-based AI coding assistant
 cask "claude-code"
 cask "font-hack-nerd-font"
