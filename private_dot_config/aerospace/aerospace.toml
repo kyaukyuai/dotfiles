@@ -237,6 +237,11 @@ run = 'move-node-to-workspace C'
 if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace E'
 
+# G = Grok Bot
+[[on-window-detected]]
+if.app-id = 'com.anysphere.sand'
+run = 'move-node-to-workspace G'
+
 # T = Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
