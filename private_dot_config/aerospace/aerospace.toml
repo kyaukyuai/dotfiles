@@ -59,6 +59,9 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# フォーカスが変わったら sketchybar のワークスペース表示を更新（ウィンドウ移動直後の追従用）
+on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_workspace_change']
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
