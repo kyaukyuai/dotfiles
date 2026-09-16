@@ -14,3 +14,8 @@
 README.md
 LICENSE
 .config/git/identity.local
+
+# sketchybar: ビルド生成物・ログは管理しない（起動時に make で再生成される）
+.config/sketchybar/helpers/event_providers/*/bin
+.config/sketchybar/helpers/menus/bin
+.config/sketchybar/noice.log
