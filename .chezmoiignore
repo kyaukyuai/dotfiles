@@ -19,3 +19,9 @@ LICENSE
 .config/sketchybar/helpers/event_providers/*/bin
 .config/sketchybar/helpers/menus/bin
 .config/sketchybar/noice.log
+
+# ウルトラワイド運用（chezmoi data の ultrawide = true）のマシンだけに配るもの
+{{ if not .ultrawide }}
+.hammerspoon
+.config/sketchybar/items/switcher.lua
+{{ end }}

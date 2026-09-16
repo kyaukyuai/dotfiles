@@ -1,7 +1,13 @@
 require("items.paw")
 require("items.menus")
+{{- if .ultrawide }}
+-- ウルトラワイド運用: Hammerspoon の切替列キー + 前面アプリ名（AeroSpace のワークスペース表示は使わない）
+require("items.switcher")
+require("items.front_app")
+{{- else }}
+-- AeroSpace のワークスペース表示
 require("items.spaces")
--- require("items.front_app")
+{{- end }}
 require("items.calendar")
 require("items.widgets")
 require("items.media")

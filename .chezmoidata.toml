@@ -1,0 +1,2 @@
+# テンプレートの既定値。マシン固有の値は ~/.config/chezmoi/chezmoi.toml の [data] で上書きする
+ultrawide = false

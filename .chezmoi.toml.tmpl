@@ -1,0 +1,5 @@
+{{- /* chezmoi init 時に一度だけ尋ね、~/.config/chezmoi/chezmoi.toml に保存される */ -}}
+{{- $ultrawide := promptBoolOnce . "ultrawide" "ウルトラワイド運用（Hammerspoon の 4 列固定レイアウト）にする" false -}}
+
+[data]
+    ultrawide = {{ $ultrawide }}
