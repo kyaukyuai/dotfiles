@@ -167,7 +167,7 @@ end
 local space_observer = sbar.add("item", "spaces.observer", {
 	drawing = false,
 	updates = true,
-	update_freq = 10, -- 取りこぼし対策のゆるいポーリング
+	update_freq = 3, -- 取りこぼし対策のポーリング（ウィンドウ移動はイベントが来ないことがある）
 })
 
 space_observer:subscribe({
