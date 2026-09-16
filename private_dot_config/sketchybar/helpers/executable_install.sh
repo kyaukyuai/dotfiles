@@ -33,6 +33,15 @@ else
   echo "pnpm が無いため sketchybar-app-font-bg をビルドできません (brew install pnpm)" >&2
 fi
 
+# ~/Library/Fonts にコピーしただけでは fontd に登録されず、sketchybar 上で
+# ":paw:" のようにリガチャ名が素の文字列で出ることがある。CoreText で明示的に
+# ユーザースコープへ登録する（登録は再ログイン後も保持される）。
+if command -v swift >/dev/null 2>&1; then
+  for f in sketchybar-app-font sketchybar-app-font-bg; do
+    swift -e "import CoreText; let u = URL(fileURLWithPath: \"$HOME/Library/Fonts/$f.ttf\"); var e: Unmanaged<CFError>?; _ = CTFontManagerRegisterFontsForURL(u as CFURL, .user, &e)" 2>/dev/null || true
+  done
+fi
+
 # SbarLua（Lua から sketchybar を操作するモジュール）
 tmp=$(mktemp -d)
 git clone --depth 1 https://github.com/FelixKratz/SbarLua.git "$tmp/SbarLua"
