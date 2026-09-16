@@ -30,7 +30,6 @@ path=(
   $HOME/.local/bin
   $HOME/.browser-use-env/bin
   $HOME/.browser-use/bin
-  ${ASDF_DATA_DIR:-$HOME/.asdf}/shims
   $VOLTA_HOME/bin
   $BUN_INSTALL/bin
   $HOME/.turso
