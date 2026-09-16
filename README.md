@@ -7,14 +7,18 @@
 ```bash
 brew install chezmoi
 chezmoi init --apply <your-github-username>   # 例: chezmoi init --apply kyaukyuai
+brew bundle --global                          # ~/.Brewfile から Homebrew パッケージを復元
 ```
+
+`chezmoi apply` 時に `run_onchange_darwin-defaults.sh` が macOS の defaults（キーリピート、Dock/メニューバー自動非表示、AltTab）を適用する。
 
 ## 含むもの
 
 - **shell**: `.zshrc`（starship + zsh）
 - **git**: `.gitconfig`（alias 多数・ghq）／ `~/.config/git/ignore`
 - **vim**: `.vimrc`
-- **~/.config**: `aerospace`（タイリングWM）/ `borders`（JankyBorders）/ `karabiner` / `sketchybar`（ステータスバー）/ `starship` / `zed`（settings）
+- **~/.config**: `aerospace`（タイリングWM）/ `borders`（JankyBorders）/ `ghostty`（ターミナル）/ `karabiner` / `sketchybar`（ステータスバー、SbarLua + AeroSpace 連携）/ `starship` / `zed`（settings）
+- **Homebrew**: `.Brewfile`（`brew bundle dump` で生成。追加インストール後は再生成する）
 
 ## 含まないもの（重要）
 

@@ -65,6 +65,7 @@ function select-history() {
   zle reset-prompt
 }
 zle -N select-history
+# ^r は atuin 導入後は atuin の検索 UI に上書きされる（下の Tool initializations 参照）
 bindkey '^r' select-history
 
 function vscode() {
@@ -159,6 +160,12 @@ command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # direnv
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+# zoxide（ディレクトリジャンプ）。`z` は zed の alias で使っているので `j` / `ji` にする
+command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd j)"
+
+# atuin（シェル履歴の検索・同期）。^r が atuin の UI になる。↑キーは従来どおり
+command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 
 # SSH Agent（既に走っていなければ起動）
 if [ -z "$SSH_AUTH_SOCK" ]; then

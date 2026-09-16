@@ -1,0 +1,86 @@
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
+tap "kyaukyuai/tap"
+tap "nikitabobko/tap"
+tap "steipete/tap"
+tap "ungive/media-control"
+tap "xdevplatform/tap"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Modern, maintained replacement for ls
+brew "eza"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Remote repository management made easy
+brew "ghq"
+# Distributed revision control system
+brew "git"
+# Google Suite CLI
+brew "gogcli"
+# Powerful, lightweight programming language
+brew "lua"
+# Control and observe media playback from the command-line
+brew "media-control"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Retrieves currently playing media, and simulates media actions
+brew "nowplaying-cli"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# Friendly PIL fork (Python Imaging Library)
+brew "pillow"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Convert HTML to PDF
+brew "weasyprint"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# A window border system for macOS
+brew "felixkratz/formulae/borders", trusted: true
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
+# Agent-first Linear CLI with stable JSON contracts, dry-run previews, and workflow-safe automation
+brew "kyaukyuai/tap/linear", trusted: true
+# Command-line ElevenLabs TTS with mac-style flags
+brew "steipete/tap/sag", trusted: true
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# Command-line interface for 1Password
+cask "1password-cli"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# Terminal-based AI coding assistant
+cask "claude-code"
+cask "font-hack-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Keyboard customiser
+cask "karabiner-elements"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
+# Tool that provides consistent, highly configurable symbols for apps
+cask "sf-symbols"
+# Auth-enabled curl-like CLI for the X API
+cask "xdevplatform/tap/xurl", trusted: true
+# Multiplayer code editor
+cask "zed"
+uv "basic-memory"
+npm "@dotenvx/dotenvx"
+npm "agent-browser"

@@ -1,0 +1,38 @@
+# Ghostty 設定
+# 参照: https://ghostty.org/docs/config/reference
+# 反映: cmd+shift+, で再読み込み
+
+# フォント（sketchybar / Zed と同じ Hack Nerd Font）
+font-family = Hack Nerd Font Mono
+font-size = 13
+
+# 配色は sketchybar の Tokyo Night に合わせる
+theme = TokyoNight
+background-opacity = 0.95
+background-blur = 20
+
+# 見た目
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# macOS
+# option をメタキーとして使う（AeroSpace が取る alt+? は AeroSpace 側が優先される）
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+window-save-state = always
+quit-after-last-window-closed = false
+
+# シェル統合（カレントディレクトリの引き継ぎ、プロンプトへのジャンプ）
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# クリップボード
+copy-on-select = clipboard
+clipboard-paste-protection = true
+
+# スクロールバック
+scrollback-limit = 10000000
