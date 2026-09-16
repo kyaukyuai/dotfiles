@@ -116,6 +116,37 @@ local function notifyBar(key)
 	hs.task.new(SKETCHYBAR, nil, { "--trigger", "left_column_change", "KEY=" .. (key or "") }):start()
 end
 
+-- macOS ネイティブタブ（Ghostty / Finder / Terminal 等）を次のタブへ送る。タブが無ければ false
+local function cycleTabs(win)
+	local ax = hs.axuielement.windowElement(win)
+	if not ax then
+		return false
+	end
+	for _, child in ipairs(ax:attributeValue("AXChildren") or {}) do
+		if child:attributeValue("AXRole") == "AXTabGroup" then
+			local tabs = {}
+			for _, t in ipairs(child:attributeValue("AXTabs") or child:attributeValue("AXChildren") or {}) do
+				if t:attributeValue("AXRole") == "AXRadioButton" then
+					table.insert(tabs, t)
+				end
+			end
+			if #tabs < 2 then
+				return false
+			end
+			for i, t in ipairs(tabs) do
+				local v = t:attributeValue("AXValue") -- 選択中のタブは true（アプリによっては 1）
+				if v == true or v == 1 then
+					tabs[(i % #tabs) + 1]:performAction("AXPress")
+					return true
+				end
+			end
+			tabs[1]:performAction("AXPress")
+			return true
+		end
+	end
+	return false
+end
+
 -- ウィンドウを担当列に置く（標準ウィンドウのみ。ダイアログ等は触らない）
 local function place(win)
 	if not win or not win:isStandard() then
@@ -151,11 +182,17 @@ local function switchTo(spec)
 		notifyBar(spec.key)
 		return
 	end
-	-- すでにそのアプリが前面なら同じキーの再押下で次の窓へ（一番後ろの窓を前に出す）
+	-- すでにそのアプリが前面なら同じキーの再押下で次へ:
+	--   窓が複数あれば一番後ろの窓を前に出す / 窓が 1 枚ならネイティブタブを順送り
 	local focused = hs.window.focusedWindow()
 	local target = wins[1]
-	if #wins > 1 and focused and focused:id() == wins[1]:id() then
-		target = wins[#wins]
+	if focused and focused:id() == wins[1]:id() then
+		if #wins > 1 then
+			target = wins[#wins]
+		elseif cycleTabs(wins[1]) then
+			notifyBar(spec.key)
+			return
+		end
 	end
 	place(target)
 	target:focus()
@@ -173,6 +210,8 @@ local function cycleSwitchColumn()
 	if #col > 1 then
 		place(col[#col])
 		col[#col]:focus()
+	elseif #col == 1 then
+		cycleTabs(col[1]) -- 窓が 1 枚だけならタブを順送り
 	end
 end
 
