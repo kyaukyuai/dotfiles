@@ -2,12 +2,15 @@ tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "kyaukyuai/tap"
 tap "nikitabobko/tap"
 tap "steipete/tap"
+tap "typester/yashiki"
 tap "ungive/media-control", trusted: { formulae: ["media-control"] }
 tap "xdevplatform/tap"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# OpenAI's coding agent that runs in your terminal
+brew "codex"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Modern, maintained replacement for ls
@@ -20,12 +23,28 @@ brew "gh"
 brew "ghq"
 # Distributed revision control system
 brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
+# Audit git repos for secrets
+brew "gitleaks"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Google Suite CLI
 brew "gogcli"
+# Git-compatible distributed version control system
+brew "jj"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Powerful, lightweight programming language
 brew "lua"
 # Control and observe media playback from the command-line
 brew "media-control"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Retrieves currently playing media, and simulates media actions
@@ -34,28 +53,48 @@ brew "nowplaying-cli"
 brew "ollama"
 # Friendly PIL fork (Python Imaging Library)
 brew "pillow"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Terminal multiplexer
+brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# JavaScript toolchain manager for reproducible environments
+brew "volta"
 # Convert HTML to PDF
 brew "weasyprint"
+# CLI for Git worktree management, designed for parallel AI agent workflows
+brew "worktrunk"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # A window border system for macOS
 brew "felixkratz/formulae/borders", trusted: true
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar", trusted: true
 # Agent-first Linear CLI with stable JSON contracts, dry-run previews, and workflow-safe automation
 brew "kyaukyuai/tap/linear", trusted: true
 # Command-line ElevenLabs TTS with mac-style flags
 brew "steipete/tap/sag", trusted: true
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -64,25 +103,59 @@ cask "1password-cli"
 cask "nikitabobko/tap/aerospace", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Chromium based browser
+cask "arc"
 # Japanese input method
 cask "azookey"
 # Terminal-based AI coding assistant
 cask "claude-code"
+# Screen capturing tool
+cask "cleanshot"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
 cask "font-hack-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Desktop automation application
+cask "hammerspoon"
+# Web browser
+cask "google-chrome"
+# Keyboard shortcuts for every button on your screen
+cask "homerow"
 # Keyboard customiser
 cask "karabiner-elements"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Calendar for professionals and teams
+cask "notion-calendar"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Email client
+cask "readdle-spark"
+# Screen recorder and editor
+cask "screen-studio"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Team communication and collaboration software
+cask "slack"
+# Native GUI tool for relational databases
+cask "tableplus"
+# Rust-based terminal
+cask "warp"
 # Auth-enabled curl-like CLI for the X API
 cask "xdevplatform/tap/xurl", trusted: true
+# macOS tiling window manager
+cask "typester/yashiki/yashiki", trusted: true
 # Multiplayer code editor
 cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
 uv "basic-memory"
 npm "@dotenvx/dotenvx"
 npm "agent-browser"
