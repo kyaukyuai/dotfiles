@@ -1,0 +1,4 @@
+# mise のグローバル設定（~/.config/mise/config.toml）
+# node / npm / pnpm は Volta が管理しているので、ここでは宣言しない（衝突を避ける）
+[tools]
+go = "1.27"

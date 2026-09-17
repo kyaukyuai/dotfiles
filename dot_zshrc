@@ -166,6 +166,10 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd j)"
 # atuin（シェル履歴の検索・同期）。^r が atuin の UI になる。↑キーは従来どおり
 command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 
+# mise（ランタイム管理。go などを ~/.config/mise/config.toml で宣言する。
+# node / npm 系は Volta 管理のままなので mise では宣言しない）
+command -v mise >/dev/null && eval "$(mise activate zsh)"
+
 # SSH Agent（既に走っていなければ起動）
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval $(ssh-agent -s) > /dev/null 2>&1
