@@ -1,11 +1,11 @@
--- Hammerspoon: 3840x1080 ウルトラワイド向けの 4 列固定レイアウト
+-- Hammerspoon: 3840x1080 ウルトラワイド向けの 3 列固定レイアウト
 --
---   [ Codex ][ Claude ][ 切替 1 枚 ][ Slack ]
+--   [ Codex ][ 切替 1 枚 ][ Slack ]
 --
--- 1・2・4 列目は常に同じアプリ（PINNED）。3 列目は alt+キーで選んだアプリ（SWITCH）に入れ替わる。
+-- 1・3 列目は常に同じアプリ（PINNED）。2 列目は alt+キーで選んだアプリ（SWITCH）に入れ替わる。
 -- タイル型 WM で木構造を維持するより、アプリ名で位置を決めてしまう方が確実なのでこの形にした。
 -- 切替列のウィンドウは同じ枠に重ねて置く（前面の 1 枚だけ見える）。同じアプリの複数窓は alt+j で巡回。
--- 4 列のフォーカス移動: alt+1〜4 で列を直接指定、alt+h / alt+l で左右へ。
+-- 3 列のフォーカス移動: alt+1〜3 で列を直接指定、alt+h / alt+l で左右へ。
 --
 -- sketchybar 連携: 切替列の状態を left_column_change イベント (KEY=<key>) で通知し、
 -- sketchybar 側 (items/switcher.lua) はクリックで hammerspoon://switch?key=<key> を開いて切り替える。
@@ -32,18 +32,18 @@ local GAP = 10
 local TOP = 54 -- sketchybar (44px) + GAP。メニューバーは自動非表示前提
 -- 列幅の比率（左から）。Slack は狭め、他は均等。
 -- Slack はウィンドウの最小幅が約 668px なので、それを下回る比率にすると画面右端からはみ出す。
-local COL_WEIGHTS = { 1, 1, 1, 0.65 }
+-- 3 列時: Codex / 切替が約 1557px、Slack が約 685px（3840px・GAP 10 の場合）。
+local COL_WEIGHTS = { 1, 1, 0.44 }
 local COLS = #COL_WEIGHTS
 local SKETCHYBAR = "/opt/homebrew/bin/sketchybar"
 
 -- 固定列のアプリ（bundle id → 列番号）
 local PINNED = {
 	["com.openai.codex"] = 1, -- ChatGPT / Codex
-	["com.anthropic.claudefordesktop"] = 2, -- Claude
-	["com.tinyspeck.slackmacgap"] = 4, -- Slack（右端）
+	["com.tinyspeck.slackmacgap"] = 3, -- Slack（右端）
 }
 -- 切替アプリが入る列
-local SWITCH_COL = 3
+local SWITCH_COL = 2
 
 -- alt+key → 切替列に出すアプリ。title を指定するとウィンドウタイトルで絞る（Chrome のプロフィール別）。
 -- この並びが sketchybar の表示順。sketchybar 側 (items/switcher.lua) の一覧と揃えること。
@@ -51,6 +51,7 @@ local SWITCH = {
 	{ key = "t", id = "com.mitchellh.ghostty" }, -- Terminal
 	{ key = "e", id = "dev.zed.Zed" }, -- Editor
 	{ key = "c", id = "com.todesktop.230313mzl4w4u92" }, -- Cursor
+	{ key = "a", id = "com.anthropic.claudefordesktop" }, -- Claude（旧 2 列目。3 列化で切替列へ）
 	{ key = "b", id = "com.google.Chrome", title = "Google Chrome - 勇哉" }, -- Browser（仕事プロフィール）
 	{ key = "p", id = "com.google.Chrome", title = "Google Chrome - yuya" }, -- Personal（個人プロフィール）
 	{ key = "m", id = "com.readdle.SparkDesktop.appstore" }, -- Mail
@@ -337,4 +338,4 @@ Layout = { layoutAll = layoutAll, switchTo = switchTo, focusColumn = focusColumn
 
 layoutAll()
 syncBar()
-hs.alert.show("Hammerspoon: 4 列レイアウト", 1)
+hs.alert.show("Hammerspoon: 3 列レイアウト", 1)

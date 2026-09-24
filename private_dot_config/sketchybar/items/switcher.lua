@@ -1,4 +1,4 @@
--- Hammerspoon の 4 列レイアウト (~/.hammerspoon/init.lua) の「切替列（左から 3 番目）」のキーを表示する。
+-- Hammerspoon の 3 列レイアウト (~/.hammerspoon/init.lua) の「切替列（左から 2 番目）」のキーを表示する。
 --   * 一覧:        下の SWITCH（init.lua の SWITCH と並び・キーを揃える）
 --   * ハイライト:  Hammerspoon が left_column_change (KEY=<key>) を発火する
 --   * クリック:    hammerspoon://switch?key=<key> を開いて Hammerspoon 側で切り替える
@@ -13,6 +13,7 @@ local SWITCH = {
 	{ key = "t", app = "Ghostty" },
 	{ key = "e", app = "Zed" },
 	{ key = "c", app = "Cursor" },
+	{ key = "a", app = "Claude" },
 	{ key = "b", app = "Google Chrome" }, -- 仕事プロフィール
 	{ key = "p", app = "Google Chrome" }, -- 個人プロフィール
 	{ key = "m", app = "Spark" },
