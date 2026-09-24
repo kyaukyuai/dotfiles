@@ -277,17 +277,35 @@ hs.urlevent.bind("switch", function(_, params)
 end)
 hs.urlevent.bind("sync", syncBar)
 
-local wf = hs.window.filter.default
--- 新しいウィンドウは出現時に担当列へ
-wf:subscribe({ hs.window.filter.windowCreated, hs.window.filter.windowUnhidden }, function(win)
-	place(win)
-end)
--- 切替列のウィンドウにフォーカスが移ったら bar のハイライトを更新
-wf:subscribe(hs.window.filter.windowFocused, function(win)
-	if win and win:isStandard() and not isPinned(win) then
-		notifyBar(keyForWindow(win))
+-- 新しいウィンドウの配置と bar のハイライト更新は hs.application.watcher で行う。
+-- hs.window.filter はシステム全体の AX 監視を張り、IME の候補ウィンドウやドラッグ中の
+-- 一時ウィンドウにも触ってしまうため使わない（ドラッグ&ドロップ/日本語入力への干渉を避ける）。
+local function placeAppWindows(app)
+	if not app then
+		return
 	end
-end)
+	for _, win in ipairs(app:allWindows()) do
+		place(win)
+	end
+end
+
+AppWatcher = hs.application.watcher.new(function(_, event, app)
+	if event == hs.application.watcher.launched or event == hs.application.watcher.unhidden then
+		-- 起動直後はウィンドウがまだ無いことがあるので少し待つ
+		hs.timer.doAfter(1.0, function()
+			placeAppWindows(app)
+		end)
+	elseif event == hs.application.watcher.activated then
+		-- 前面になったアプリの主ウィンドウを担当列へ（新しく開いた窓もここで揃う）
+		local win = app:focusedWindow()
+		if win and win:isStandard() then
+			place(win)
+			if not isPinned(win) then
+				notifyBar(keyForWindow(win))
+			end
+		end
+	end
+end):start()
 
 -- ウォッチャーはグローバルに保持する（ローカルだと GC に回収されて動かなくなる）
 -- ディスプレイ構成が変わったら整列し直す
