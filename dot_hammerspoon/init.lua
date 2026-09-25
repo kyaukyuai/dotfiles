@@ -30,9 +30,9 @@ end
 
 local GAP = 10
 local TOP = 54 -- sketchybar (44px) + GAP。メニューバーは自動非表示前提
--- 列幅の比率（左から）。3 列均等で各約 1267px（3840px・GAP 10 の場合）。
+-- 列幅の比率（左から）。切替列を広め、Slack を狭め（Codex 約 1267px / 切替 約 1583px / Slack 約 950px）。
 -- Slack を狭めるなら最小幅約 668px を下回らないこと（下回ると画面右端からはみ出す）。
-local COL_WEIGHTS = { 1, 1, 1 }
+local COL_WEIGHTS = { 1, 1.25, 0.75 }
 local COLS = #COL_WEIGHTS
 local SKETCHYBAR = "/opt/homebrew/bin/sketchybar"
 
