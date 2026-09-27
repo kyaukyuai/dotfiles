@@ -36,3 +36,7 @@ clipboard-paste-protection = true
 
 # スクロールバック
 scrollback-limit = 10000000
+
+# クイックターミナル: どのアプリからでも ctrl+` でドロップダウン表示/非表示
+# (cmd+` は macOS の同一アプリ内ウィンドウ切替と衝突するため ctrl を採用)
+keybind = global:ctrl+grave_accent=toggle_quick_terminal

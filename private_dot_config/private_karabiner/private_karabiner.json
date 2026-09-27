@@ -233,6 +233,37 @@
                                 }
                             }
                         ]
+                    },
+                    {
+                        "description": "tab 単押しで tab、他キーと同時押しで Hyper (ctrl+opt+cmd+shift)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "tab"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
