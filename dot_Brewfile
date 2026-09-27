@@ -93,6 +93,7 @@ brew "zellij"
 brew "zoxide"
 # A window border system for macOS
 brew "felixkratz/formulae/borders", trusted: true
+brew "ical-buddy" # sketchybar の次の予定ウィジェット用
 # Agent-first Linear CLI with stable JSON contracts, dry-run previews, and workflow-safe automation
 brew "kyaukyuai/tap/linear", trusted: true
 # Command-line ElevenLabs TTS with mac-style flags
