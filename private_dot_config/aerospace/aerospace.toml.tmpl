@@ -219,6 +219,11 @@ alt-shift-l = ['join-with right', 'mode main']
 # See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
 # コールバックは定義順に最初の一致だけが実行されるので、Chrome はプロフィール別 → 汎用の順に並べる。
 
+# Finder はタイルに組み込まず、フローティングで開く（一時的に開いてすぐ閉じる用途向け）。
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
 # T = Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'

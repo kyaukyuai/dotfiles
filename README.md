@@ -10,7 +10,7 @@ chezmoi init --apply <your-github-username>   # 例: chezmoi init --apply kyauky
 brew bundle --global                          # ~/.Brewfile から Homebrew パッケージを復元
 ```
 
-`chezmoi apply` 時に `run_onchange_darwin-defaults.sh` が macOS の defaults（キーリピート、Dock/メニューバー自動非表示、AltTab）を適用する。
+`chezmoi apply` 時に `run_onchange_darwin-defaults.sh` が macOS の defaults（キーリピート、Dock/メニューバー自動非表示、AltTab、Finder のパスバー/リスト表示/ホームで新規ウィンドウなど）を適用する。
 
 ## 含むもの
 
